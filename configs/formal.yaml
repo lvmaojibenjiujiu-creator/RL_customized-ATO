@@ -1,0 +1,79 @@
+experiment:
+  seed: 7
+  products: 5
+  components: 15
+  horizon: 40
+  demand_pattern: poisson
+  mean_demand: 3.0
+  demand_cv: 0.3
+  demand_correlation: 0.0
+  seasonal_beta: 0.3
+  seasonal_cycle: 6
+  design_lead_time: 3
+  delivery_window: 3
+  min_replenishment_lead_time: 2
+  max_replenishment_lead_time: 6
+  component_commonality: 0.3
+  commonality_tolerance: 0.02
+  family_degree_min: 2
+  family_degree_max: 6
+  bom_cv: 0.2
+  random_costs: true
+  holding_cost: 1.0
+  ordering_cost: 1.0
+  holding_cost_low: 0.8
+  holding_cost_high: 1.2
+  ordering_cost_low: 0.8
+  ordering_cost_high: 1.2
+  backorder_to_holding: 2.0
+  initial_inventory_factor: 1.0
+  correlation_pilot_samples: 8000
+  correlation_tolerance: 0.001
+  history_window: 8
+  train_episodes: 1000
+  eval_episodes: 1000
+  pi_episodes: 50
+
+ppo:
+  network_seed: -1
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  entropy_coef: 0.01
+  value_coef: 0.5
+  reward_scale: 0.001
+  learning_rate: 0.0003
+  batch_size: 256
+  epochs: 6
+  rollout_episodes: 4
+  max_grad_norm: 0.7
+  gat_layers: 2
+  gat_hidden_width: 128
+  attention_heads: 4
+  gru_hidden_size: 64
+  context_dim: 64
+  eta_max: 1.0
+  base_stock_scale: 1.0
+  base_stock_floor: 1.5
+  base_stock_safety: 0.0
+  adaptive_dtp_blend: 0.0
+  short_design_scale: 1.0
+  shadow_price_scale: 1.0
+  alpha_mon_start: 0.0001
+  alpha_lip_start: 0.0001
+  alpha_rat_start: 0.0001
+  alpha_mon_end: 0.01
+  alpha_lip_end: 0.01
+  alpha_rat_end: 0.01
+  regularization_samples: 0
+  device: cpu
+
+sensitivity:
+  bom_cv: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+  component_commonality: [0.1, 0.2, 0.3, 0.5, 0.7, 0.8]
+  delivery_window: [1, 2, 3, 4, 5, 6]
+  max_replenishment_lead_time: [2, 3, 4, 5, 6]
+  design_lead_time: [0, 1, 2, 3, 4, 5]
+  demand_correlation: [0.0, 0.2, 0.4, 0.6, 0.8, 0.9]
+  seasonal_beta: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+  backorder_to_holding: [1.0, 1.5, 2.0, 2.5, 3.0]
