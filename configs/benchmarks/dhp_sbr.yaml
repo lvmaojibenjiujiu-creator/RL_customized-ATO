@@ -8,8 +8,8 @@ dhp_sbr:
   imminent_pipeline_window_mode: "mean_lead_time"
   aggregate_lead_time_mode: "max"
   replenishment_target_aggregation: "min"
-  n_cal_paths_small: 200
-  n_cal_paths_large: 80
+  n_cal_paths_small: 300
+  n_cal_paths_large: 300
   T_cal: 200
   warmup: 50
   safety_factor: 0.0
