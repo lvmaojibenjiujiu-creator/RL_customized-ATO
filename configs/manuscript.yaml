@@ -1,0 +1,94 @@
+experiment:
+  seed: 7
+  products: 5
+  components: 15
+  horizon: 40
+  demand_pattern: poisson
+  mean_demand: 3.0
+  demand_cv: 0.3
+  demand_correlation: 0.0
+  seasonal_beta: 0.3
+  seasonal_cycle: 6
+  design_lead_time: 3
+  delivery_window: 3
+  min_replenishment_lead_time: 1
+  max_replenishment_lead_time: 6
+  component_commonality: 0.3
+  bom_min: 1
+  bom_max: 3
+  bom_cv: 0.2
+  random_costs: true
+  holding_cost: 1.0
+  ordering_cost: 1.0
+  holding_cost_low: 0.8
+  holding_cost_high: 1.2
+  ordering_cost_low: 0.8
+  ordering_cost_high: 1.2
+  backorder_to_holding: 2.0
+  correlation_pilot_samples: 8000
+  correlation_tolerance: 0.001
+  history_window: 8
+  discount_factor: 0.99
+  train_episodes: 1000
+  evaluation_episodes: 100
+  pi_episodes: 100
+  holdout_episode_offset: 2000000
+  comparison_scales:
+    - [5, 15]
+    - [10, 20]
+    - [20, 100]
+  comparison_demand_patterns: [poisson, seasonal]
+ppo:
+  network_seed: -1
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_start: 0.2
+  clip_end: 0.1
+  entropy_start: 0.01
+  entropy_end: 0.0
+  value_coef: 0.5
+  learning_rate: 0.0003
+  batch_size: 256
+  epochs: 10
+  rollout_episodes: 8
+  max_grad_norm: 0.7
+  gat_layers: 2
+  gat_hidden_width: 128
+  attention_heads: 4
+  gru_hidden_size: 64
+  context_dim: 64
+  eta_max: 1.0
+  alpha_mon_start: 0.0001
+  alpha_lip_start: 0.0001
+  alpha_rat_start: 0.0001
+  alpha_mon_end: 0.01
+  alpha_lip_end: 0.01
+  alpha_rat_end: 0.01
+  device: cpu
+benchmarks:
+  saa_training_paths: 20
+  saa_calibration_episode_offset: 1500000
+  saa_step_sizes: [8, 4, 2, 1]
+  saa_beta_late: 1.0
+  saa_upper_quantile: 0.99
+  dhp_z_max: 10
+  dhp_calibration_paths: 200
+  dhp_calibration_episode_offset: 1000000
+  rh_horizon: 8
+  rh_scenarios: 15
+  rh_terminal_backlog_weight: 1.0
+  rh_terminal_inventory_weight: 0.0
+  rh_mip_gap: 0.0
+  rh_time_limit: 0.0
+  rh_threads: 0
+  rh_seed_offset: 2500000
+sensitivity:
+  bom_cv: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+  component_commonality: [0.1, 0.2, 0.3, 0.5, 0.7, 0.8]
+  delivery_window: [1, 2, 3, 4, 5, 6]
+  max_replenishment_lead_time: [2, 3, 4, 5, 6]
+  design_lead_time: [0, 1, 2, 3, 4, 5]
+  demand_cv: [0.0, 0.2, 0.4, 0.6, 0.8, 0.9]
+  demand_correlation: [0.0, 0.2, 0.4, 0.6, 0.8, 0.9]
+  seasonal_beta: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+  backorder_to_holding: [1.0, 1.5, 2.0, 2.5, 3.0]
